@@ -59,6 +59,12 @@
         button:hover {
             background-color: #1557b0;
         }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none; /* Hidden by default */
+        }
         .footer {
             margin-top: 30px;
             font-size: 12px;
@@ -79,6 +85,7 @@
             <input type="email" id="email" name="email" placeholder="Email or phone" required>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
             <button type="submit">Sign in</button>
+            <div id="errorMessage" class="error">Wrong password. Try again.</div>
         </form>
         <div class="footer">
             <a href="#" class="link">Forgot password?</a><br>
@@ -89,10 +96,20 @@
     </div>
 
     <script>
+        const correctPassword = "password123"; // Ganti dengan password yang benar
+
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
-            // Simulate login and redirect to Google Drive
-            window.location.href = 'https://drive.google.com/drive/folders/1hDdAySCY-x2QGPSFd-eNSAfO__jNjrWM';
+            const enteredPassword = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (enteredPassword === correctPassword) {
+                // Password benar, redirect ke Google Drive
+                window.location.href = 'https://drive.google.com';
+            } else {
+                // Password salah, tampilkan error
+                errorMessage.style.display = 'block';
+            }
         });
     </script>
 </body>
