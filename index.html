@@ -88,7 +88,7 @@
             <div id="errorMessage" class="error">Invalid email or password. Try again.</div>
         </form>
         <div class="footer">
-            <a href="#" class="link">Forgot password?</a><br>
+            <a href="https://myaccount.google.com/recovery" target="_blank" class="link">Forgot password?</a><br>
             Not your computer? Use Guest mode to sign in privately.<br>
             <a href="#" class="link">Learn more</a><br>
             by faizproject
@@ -112,7 +112,7 @@
             // Cek apakah email ada dan password cocok
             if (userAccounts[enteredEmail] && userAccounts[enteredEmail] === enteredPassword) {
                 // Login berhasil, redirect ke Google Drive
-                window.location.href = 'https://drive.google.com/drive/folders/1hDdAySCY-x2QGPSFd-eNSAfO__jNjrWM';
+                window.location.href = 'https://drive.google.com';
             } else {
                 // Email atau password salah, tampilkan error
                 errorMessage.style.display = 'block';
