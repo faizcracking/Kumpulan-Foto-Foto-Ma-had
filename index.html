@@ -20,6 +20,12 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
+            text-align: center; /* Center the logo */
+        }
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
         }
         input {
             width: 100%;
@@ -40,10 +46,19 @@
         button:hover {
             background-color: #0056b3;
         }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
+        <a href="https://www.google.com" target="_blank">
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo" class="logo">
+        </a>
         <h2>Login Email</h2>
         <form action="/login" method="post">
             <label for="email">Email:</label>
@@ -54,6 +69,9 @@
             
             <button type="submit">Login</button>
         </form>
+        <div class="footer">
+            by faizproject
+        </div>
     </div>
 </body>
 </html>
